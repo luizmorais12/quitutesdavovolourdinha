@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Quitutes da Vovó Louribinha — Cardápio digital de salgadinhos, pastéis, esfihas e doces caseiros preparados com carinho. Faça seu pedido pelo WhatsApp!" />
+  <meta name="theme-color" content="#FF6B00" />
+  <title>Quitutes da Vovó Louribinha | Cardápio Digital</title>
+
+  <!-- Google Fonts: Fredoka (títulos acolhedores e artesanais) + Plus Jakarta Sans (leitura limpa e números nítidos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Fundo decorativo discreto com ilustrações SVG de salgados e doces -->
+  <div class="bg-pattern" aria-hidden="true"></div>
+
+  <!-- ====================================================================
+       CABEÇALHO PRINCIPAL
+       ==================================================================== -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand-link" aria-label="Quitutes da Vovó Louribinha - Início">
+        <div class="brand-logo-wrap">
+          <img
+            src="assets/logo.png"
+            alt="Logo Quitutes da Vovó Louribinha"
+            class="brand-logo-img"
+            id="headerLogoImg"
+            onerror="this.parentElement.classList.add('logo-fallback-active');"
+          />
+          <div class="brand-logo-fallback" aria-hidden="true">
+            <span class="fallback-vovo-badge">Vovó</span>
+            <span class="fallback-vovo-sub">Louribinha</span>
+          </div>
+        </div>
+        <div class="brand-text">
+          <span class="brand-eyebrow">Cardápio Digital</span>
+          <span class="brand-title">Quitutes da Vovó Louribinha</span>
+        </div>
+      </a>
+
+      <!-- Navegação pelas categorias -->
+      <nav class="header-nav" aria-label="Categorias do cardápio">
+        <a href="#cardapio" class="header-nav-link" data-nav-category="salgadinhos">Salgadinhos</a>
+        <a href="#cardapio" class="header-nav-link" data-nav-category="pasteis">Pastéis</a>
+        <a href="#cardapio" class="header-nav-link" data-nav-category="esfihas">Esfihas</a>
+        <a href="#cardapio" class="header-nav-link" data-nav-category="doces">Doces</a>
+      </nav>
+
+      <!-- Botão do Carrinho no Cabeçalho -->
+      <button
+        type="button"
+        class="header-cart-btn"
+        id="headerCartBtn"
+        aria-label="Abrir carrinho de compras"
+        aria-expanded="false"
+        aria-controls="cartDrawer"
+      >
+        <span class="cart-icon-wrap" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-count-badge" id="headerCartCount">0</span>
+        </span>
+        <span class="header-cart-info">
+          <span class="header-cart-label">Meu Pedido</span>
+          <strong class="header-cart-total" id="headerCartTotal">R$ 0,00</strong>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ====================================================================
+         BANNER PRINCIPAL (HERO)
+         ==================================================================== -->
+    <section class="hero-section" aria-labelledby="heroHeading">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-brand-emblem">
+            <img
+              src="assets/logo.png"
+              alt="Logo Oficial Quitutes da Vovó Louribinha"
+              class="hero-brand-logo-img"
+              onerror="this.parentElement.hidden = true;"
+            />
+            <div class="hero-pill">
+              <span class="hero-pill-dot" aria-hidden="true"></span>
+              <span>Receitas de família • Feito com amor e tradição</span>
+            </div>
+          </div>
+
+          <h1 id="heroHeading" class="hero-title">
+            Um sabor especial para cada momento!
+          </h1>
+
+          <p class="hero-subtitle">
+            Quitutes preparados com carinho para deixar seus momentos ainda mais gostosos.
+          </p>
+
+          <!-- Destaques comerciais claros -->
+          <div class="hero-highlights">
+            <div class="highlight-chip highlight-chip--green">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span><strong>Cento de Salgadinhos:</strong> R$ 65,00 (100 un.)</span>
+            </div>
+            <div class="highlight-chip highlight-chip--warm">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span><strong>Unidade avulsa:</strong> R$ 0,75/un (&lt; 100 un.)</span>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#cardapio" class="btn btn-primary btn-lg hero-cta-btn">
+              <span>Ver nosso cardápio</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+            </a>
+            <button type="button" class="btn btn-outline btn-lg" id="heroQuickComboBtn">
+              Experimentar sugestão (40 un. — R$ 30,00)
+            </button>
+          </div>
+        </div>
+
+        <!-- Apresentação visual com a fotografia real dos mini salgados -->
+        <div class="hero-visual">
+          <div class="hero-photo-card">
+            <div class="hero-photo-frame" id="heroPhotoFrame">
+              <img
+                src="assets/images/mini-salgados.jpg"
+                alt="Mini salgados fresquinhos e dourados da Quitutes da Vovó Louribinha"
+                class="hero-product-img"
+                id="heroProductImg"
+                onerror="this.parentElement.classList.add('photo-fallback-active');"
+              />
+              <!-- Fallback elegante caso a fotografia ainda não tenha sido copiada para assets/images/mini-salgados.jpg -->
+              <div class="hero-photo-fallback">
+                <div class="fallback-illustration" aria-hidden="true">
+                  <svg width="88" height="88" viewBox="0 0 120 120" fill="none">
+                    <circle cx="60" cy="60" r="54" fill="#FFF5EB" stroke="#FF6B00" stroke-width="3" stroke-dasharray="6 6"/>
+                    <path d="M60 24C46 42 36 56 36 72C36 85.2548 46.7452 96 60 96C73.2548 96 84 85.2548 84 72C84 56 74 42 60 24Z" fill="#FF6B00" fill-opacity="0.18" stroke="#8B352B" stroke-width="3.5"/>
+                    <path d="M52 66C52 60 58 54 64 54" stroke="#8B352B" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="48" cy="76" r="3" fill="#8B352B"/>
+                    <circle cx="68" cy="74" r="3" fill="#8B352B"/>
+                  </svg>
+                </div>
+                <span class="fallback-photo-tag">Fotografia Oficial dos Produtos</span>
+                <strong class="fallback-photo-title">Mini Salgados da Vovó Louribinha</strong>
+                <p class="fallback-photo-desc">
+                  Coxinhas, bolinhas de queijo, risoles, quibes e salgadinhos de carne e calabresa preparados no capricho.
+                </p>
+              </div>
+            </div>
+
+            <!-- Selo flutuante de preço do cento -->
+            <div class="hero-floating-badge hero-floating-badge--top">
+              <span class="badge-Small">Oferta do Cento</span>
+              <strong class="badge-Big">100 un. por R$ 65,00</strong>
+            </div>
+
+            <div class="hero-floating-badge hero-floating-badge--bottom">
+              <span class="badge-dot" aria-hidden="true"></span>
+              <span>Misture seus sabores favoritos!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BARRA EXPLICATIVA DE COMO FUNCIONA
+         ==================================================================== -->
+    <section class="steps-strip" aria-label="Como fazer seu pedido">
+      <div class="container steps-grid">
+        <div class="step-item">
+          <span class="step-number">1</span>
+          <div>
+            <strong>Escolha seus quitutes</strong>
+            <p>Navegue pelas categorias e selecione as quantidades desejadas.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-number">2</span>
+          <div>
+            <strong>Acompanhe o valor na hora</strong>
+            <p>O carrinho calcula tudo automaticamente conforme a regra da Vovó.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-number">3</span>
+          <div>
+            <strong>Envie pelo WhatsApp</strong>
+            <p>Revise seu pedido e envie pronto para confirmação com a proprietária.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SEÇÃO DO CARDÁPIO E CATEGORIAS
+         ==================================================================== -->
+    <section class="menu-section" id="cardapio" aria-labelledby="menuHeading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Nosso Cardápio Caseiro</span>
+          <h2 id="menuHeading" class="section-title">Escolha os Sabores do Seu Pedido</h2>
+          <p class="section-subtitle">
+            Selecione a categoria abaixo, escolha a quantidade de cada sabor e adicione ao seu carrinho.
+          </p>
+        </div>
+
+        <!-- Barra de Progresso do Cento de Salgadinhos -->
+        <div class="cento-tracker-banner" id="centoTrackerBanner" aria-live="polite">
+          <div class="cento-tracker-info">
+            <div class="cento-tracker-title-row">
+              <span class="cento-badge-icon" aria-hidden="true">🥟</span>
+              <strong id="centoTrackerTitle">Monte seu pedido de Mini Salgados!</strong>
+              <span class="cento-counter-pill" id="centoCounterPill">0 / 100 un.</span>
+            </div>
+            <p id="centoTrackerText" class="cento-tracker-desc">
+              Unidade avulsa por <strong>R$ 0,75</strong> (até 99 un.) ou feche <strong>100 unidades (1 cento) por R$ 65,00</strong> misturando sabores!
+            </p>
+          </div>
+          <div class="cento-progress-wrap">
+            <div class="cento-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="centoProgressBar">
+              <div class="cento-progress-fill" id="centoProgressFill" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filtros de Categorias -->
+        <div class="category-tabs-wrap">
+          <div class="category-tabs" id="categoryTabs" role="tablist" aria-label="Filtrar produtos por categoria">
+            <!-- Gerado dinamicamente via main.js -->
+          </div>
+        </div>
+
+        <!-- Cabeçalho contextual da categoria selecionada -->
+        <div class="active-category-banner" id="activeCategoryBanner" aria-live="polite">
+          <!-- Atualizado via main.js -->
+        </div>
+
+        <!-- Grid de Produtos -->
+        <div class="products-grid" id="productsGrid" aria-live="polite">
+          <!-- Cards de produtos gerados dinamicamente via main.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       RODAPÉ
+       ==================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-row">
+          <div class="brand-logo-wrap brand-logo-wrap--sm">
+            <img
+              src="assets/logo.png"
+              alt="Logo Quitutes da Vovó Louribinha"
+              class="brand-logo-img"
+              onerror="this.parentElement.classList.add('logo-fallback-active');"
+            />
+            <div class="brand-logo-fallback" aria-hidden="true">
+              <span class="fallback-vovo-badge">Vovó</span>
+              <span class="fallback-vovo-sub">Louribinha</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="footer-title">Quitutes da Vovó Louribinha</h3>
+            <p class="footer-tagline">Um sabor especial para cada momento!</p>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Salgadinhos, pastéis, esfihas e doces preparados com tradição, higiene e muito carinho caseiro para sua família, festa ou confraternização.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Categorias</h4>
+        <ul>
+          <li><a href="#cardapio" data-nav-category="salgadinhos">Salgadinhos (R$ 65,00 o cento)</a></li>
+          <li><a href="#cardapio" data-nav-category="pasteis">Pastéis Caseiros</a></li>
+          <li><a href="#cardapio" data-nav-category="esfihas">Esfihas Caseiras</a></li>
+          <li><a href="#cardapio" data-nav-category="doces">Doces Tradicionais</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Atendimento e Pedidos</h4>
+        <p>Encomendas e dúvidas diretamente pelo nosso WhatsApp oficial:</p>
+        <a
+          href="https://wa.me/5511947960798"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-wa-link"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+          <span>+55 11 94796-0798</span>
+        </a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="currentYear">2026</span> Quitutes da Vovó Louribinha. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       BARRA FIXA INFERIOR NO CELULAR ("Ver meu pedido — R$ XX,XX")
+       ==================================================================== -->
+  <div class="mobile-cart-bar" id="mobileCartBar" hidden>
+    <button type="button" class="mobile-cart-trigger" id="mobileCartBtn" aria-label="Ver meu pedido completo">
+      <span class="mobile-cart-count" id="mobileCartCount">0</span>
+      <span class="mobile-cart-text" id="mobileCartText">Ver meu pedido — R$ 0,00</span>
+      <span class="mobile-cart-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </span>
+    </button>
+  </div>
+
+  <!-- ====================================================================
+       PAINEL LATERAL DO CARRINHO (DRAWER)
+       ==================================================================== -->
+  <div class="drawer-backdrop" id="cartBackdrop" hidden></div>
+
+  <aside
+    class="cart-drawer"
+    id="cartDrawer"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cartDrawerTitle"
+    aria-hidden="true"
+  >
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title-wrap">
+        <h2 id="cartDrawerTitle">Seu Pedido</h2>
+        <span class="cart-drawer-subtitle" id="cartDrawerSubtitle">0 itens selecionados</span>
+      </div>
+      <div class="cart-drawer-header-actions">
+        <button
+          type="button"
+          class="btn-text-danger"
+          id="clearCartBtn"
+          title="Remover todos os produtos do carrinho"
+          hidden
+        >
+          Limpar
+        </button>
+        <button
+          type="button"
+          class="icon-close-btn"
+          id="closeCartBtn"
+          aria-label="Fechar carrinho"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Corpo do Carrinho -->
+    <div class="cart-drawer-body" id="cartDrawerBody">
+      <!-- Estado vazio ou lista de itens renderizados via main.js -->
+    </div>
+
+    <!-- Rodapé do Carrinho com Resumo e Botão de Checkout -->
+    <div class="cart-drawer-footer" id="cartDrawerFooter" hidden>
+      <!-- Alerta da regra dos salgadinhos no carrinho -->
+      <div class="cart-rule-box" id="cartRuleBox" hidden></div>
+
+      <!-- Alerta de itens com preço sob consulta -->
+      <div class="cart-consult-alert" id="cartConsultAlert" hidden>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <span>
+          Seu pedido inclui item(ns) com valor <strong>"Consulte o valor"</strong>. O preço desses itens será informado pela Vovó Louribinha no WhatsApp.
+        </span>
+      </div>
+
+      <div class="cart-summary-lines">
+        <div class="cart-summary-row">
+          <span>Quantidade total de itens:</span>
+          <strong id="cartFooterTotalQty">0 un.</strong>
+        </div>
+        <div class="cart-summary-row cart-summary-row--total">
+          <span>Total dos produtos:</span>
+          <strong id="cartFooterTotalValue">R$ 0,00</strong>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary btn-block btn-lg" id="proceedToCheckoutBtn">
+        <span>Continuar para Dados e Revisão</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ====================================================================
+       MODAL DE FINALIZAÇÃO DO PEDIDO (CHECKOUT + REVISÃO FINAL)
+       ==================================================================== -->
+  <div class="modal-backdrop" id="checkoutBackdrop" hidden></div>
+
+  <div
+    class="checkout-modal"
+    id="checkoutModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="checkoutModalTitle"
+    hidden
+  >
+    <div class="checkout-modal-card">
+      <div class="checkout-modal-header">
+        <div>
+          <span class="section-eyebrow">Última etapa</span>
+          <h2 id="checkoutModalTitle">Finalização e Revisão do Pedido</h2>
+        </div>
+        <button type="button" class="icon-close-btn" id="closeCheckoutBtn" aria-label="Fechar finalização do pedido">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="checkoutForm" class="checkout-modal-body" novalidate>
+        <!-- Mensagem geral de erro de validação -->
+        <div class="checkout-error-banner" id="checkoutErrorBanner" role="alert" hidden></div>
+
+        <div class="checkout-columns">
+          <!-- COLUNA 1: DADOS DO CLIENTE E ENTREGA/RETIRADA -->
+          <div class="checkout-form-col">
+            <fieldset class="checkout-fieldset">
+              <legend class="fieldset-legend">1. Seus Dados</legend>
+
+              <div class="form-group">
+                <label for="customerName" class="form-label">Nome completo <span class="req">*</span></label>
+                <input
+                  type="text"
+                  id="customerName"
+                  name="customerName"
+                  class="form-control"
+                  placeholder="Ex: Maria Aparecida Silva"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="customerPhone" class="form-label">Telefone / WhatsApp para contato <span class="req">*</span></label>
+                <input
+                  type="tel"
+                  id="customerPhone"
+                  name="customerPhone"
+                  class="form-control"
+                  placeholder="(11) 99999-9999"
+                  autocomplete="tel"
+                  required
+                />
+              </div>
+            </fieldset>
+
+            <fieldset class="checkout-fieldset">
+              <legend class="fieldset-legend">2. Tipo de Recebimento <span class="req">*</span></legend>
+
+              <div class="delivery-toggle-grid" role="radiogroup" aria-label="Tipo de recebimento">
+                <label class="delivery-option-card" id="optionRetiradaCard">
+                  <input
+                    type="radio"
+                    name="deliveryType"
+                    value="retirada"
+                    id="deliveryRetirada"
+                    checked
+                  />
+                  <span class="delivery-option-icon" aria-hidden="true">🏠</span>
+                  <span class="delivery-option-title">Retirada no Local</span>
+                  <span class="delivery-option-desc">Retirar diretamente com a Vovó Louribinha</span>
+                </label>
+
+                <label class="delivery-option-card" id="optionEntregaCard">
+                  <input
+                    type="radio"
+                    name="deliveryType"
+                    value="entrega"
+                    id="deliveryEntrega"
+                  />
+                  <span class="delivery-option-icon" aria-hidden="true">🛵</span>
+                  <span class="delivery-option-title">Entrega</span>
+                  <span class="delivery-option-desc">Receber no endereço informado</span>
+                </label>
+              </div>
+
+              <!-- Campos de endereço exibidos apenas quando "Entrega" está selecionada -->
+              <div class="delivery-address-fields" id="deliveryAddressFields" hidden>
+                <div class="form-group">
+                  <label for="addressStreet" class="form-label">Endereço completo (Rua e número) <span class="req">*</span></label>
+                  <input
+                    type="text"
+                    id="addressStreet"
+                    name="addressStreet"
+                    class="form-control"
+                    placeholder="Ex: Rua das Flores, 123"
+                    autocomplete="street-address"
+                  />
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="addressNeighborhood" class="form-label">Bairro <span class="req">*</span></label>
+                    <input
+                      type="text"
+                      id="addressNeighborhood"
+                      name="addressNeighborhood"
+                      class="form-control"
+                      placeholder="Ex: Centro"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="addressComplement" class="form-label">Complemento e referência</label>
+                    <input
+                      type="text"
+                      id="addressComplement"
+                      name="addressComplement"
+                      class="form-control"
+                      placeholder="Ex: Apto 12, próx. à padaria"
+                    />
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="checkout-fieldset">
+              <legend class="fieldset-legend">3. Data, Horário e Observações</legend>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="desiredDate" class="form-label">Data desejada <span class="req">*</span></label>
+                  <input
+                    type="date"
+                    id="desiredDate"
+                    name="desiredDate"
+                    class="form-control"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="desiredTime" class="form-label">Horário desejado <span class="req">*</span></label>
+                  <input
+                    type="time"
+                    id="desiredTime"
+                    name="desiredTime"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="orderNotes" class="form-label">Observações adicionais</label>
+                <textarea
+                  id="orderNotes"
+                  name="orderNotes"
+                  class="form-control"
+                  rows="3"
+                  placeholder="Informe detalhes adicionais, sabores específicos para itens sob consulta ou preferências para seu pedido..."
+                ></textarea>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- COLUNA 2: REVISÃO FINAL DO PEDIDO -->
+          <div class="checkout-review-col">
+            <div class="review-box">
+              <div class="review-box-header">
+                <h3>Revisão Final do Pedido</h3>
+                <button type="button" class="btn-link-edit" id="backToCartFromCheckoutBtn">
+                  Alterar produtos
+                </button>
+              </div>
+
+              <div class="review-items-list" id="checkoutReviewItems">
+                <!-- Preenchido dinamicamente via main.js -->
+              </div>
+
+              <div class="review-totals-box" id="checkoutReviewTotals">
+                <!-- Subtotais, taxa de entrega e total geral preenchidos via main.js -->
+              </div>
+
+              <!-- Confirmação obrigatória quando há itens "Consulte o valor" -->
+              <div class="consult-ack-box" id="checkoutConsultAckBox" hidden>
+                <label class="consult-ack-label">
+                  <input type="checkbox" id="checkoutConsultAck" />
+                  <span>
+                    Estou ciente de que meu pedido possui item(ns) com preço <strong>"Consulte o valor"</strong> e que é necessário consultar e confirmar o valor final pelo WhatsApp com a proprietária.
+                  </span>
+                </label>
+              </div>
+
+              <p class="checkout-disclaimer">
+                Ao clicar no botão abaixo, você será redirecionado para o WhatsApp oficial da <strong>Quitutes da Vovó Louribinha</strong> com o resumo completo do seu pedido. A confirmação final do pedido depende da resposta da proprietária.
+              </p>
+
+              <button type="submit" class="btn btn-whatsapp btn-block btn-lg" id="submitWhatsAppOrderBtn">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+                <span>FINALIZAR PEDIDO PELO WHATSAPP</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL PÓS-ENVIO (CASO O CLIENTE PRECISE COPIAR OU REABRIR O WHATSAPP)
+       ==================================================================== -->
+  <div class="modal-backdrop" id="postOrderBackdrop" hidden></div>
+  <div
+    class="post-order-modal"
+    id="postOrderModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="postOrderTitle"
+    hidden
+  >
+    <div class="post-order-card">
+      <div class="post-order-icon" aria-hidden="true">📲</div>
+      <h3 id="postOrderTitle">Resumo Gerado para o WhatsApp!</h3>
+      <p>
+        Abrimos o WhatsApp com os dados do seu pedido para o número oficial <strong>+55 11 94796-0798</strong>.
+        Lembre-se de enviar a mensagem na conversa e aguardar a confirmação da Vovó Louribinha! ❤️
+      </p>
+
+      <div class="post-order-preview-wrap">
+        <label for="generatedMessagePreview" class="form-label">Mensagem gerada:</label>
+        <textarea id="generatedMessagePreview" class="form-control" rows="7" readonly></textarea>
+      </div>
+
+      <div class="post-order-actions">
+        <a
+          href="https://wa.me/5511947960798"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-whatsapp btn-block"
+          id="directWhatsAppLinkBtn"
+        >
+          Abrir WhatsApp Novamente
+        </a>
+        <div class="post-order-secondary-btns">
+          <button type="button" class="btn btn-outline" id="copyWhatsAppMsgBtn">
+            Copiar mensagem
+          </button>
+          <button type="button" class="btn btn-ghost" id="closePostOrderBtn">
+            Voltar ao cardápio
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast de notificação rápida -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Scripts Vanilla JS na ordem correta -->
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+

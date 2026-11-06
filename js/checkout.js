@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * QUITUTES DA VOVÓ LOURIBINHA - CHECKOUT, VALIDAÇÃO E INTEGRAÇÃO WHATSAPP
+ * QUITUTES DA VOVÓ LOURDINHA - CHECKOUT, VALIDAÇÃO E INTEGRAÇÃO WHATSAPP
  * ============================================================================
  * Arquivo: js/checkout.js
  *
@@ -166,7 +166,7 @@ const CheckoutManager = (() => {
   }
 
   /**
-   * Gera o texto completo da mensagem para o WhatsApp seguindo fielmente o modelo solicitado.
+   * Gera o texto da mensagem para o WhatsApp de forma organizada, bonita e enxuta.
    * @param {object} formData
    * @param {object} cartSummary
    * @returns {string}
@@ -174,74 +174,49 @@ const CheckoutManager = (() => {
   function buildWhatsAppMessage(formData, cartSummary) {
     const lines = [];
 
-    lines.push('Olá! Gostaria de fazer um pedido na Quitutes da Vovó Louribinha! 😊');
+    lines.push('Olá! Gostaria de fazer um pedido na *Quitutes da Vovó Lourdinha*! 😊');
     lines.push('');
-    lines.push('*RESUMO DO PEDIDO*');
+    lines.push('📋 *RESUMO DO PEDIDO*');
+    lines.push(`👤 *Cliente:* ${String(formData.customerName || '').trim()}`);
+    lines.push(`📞 *Contato:* ${String(formData.customerPhone || '').trim()}`);
     lines.push('');
-    lines.push(`*Cliente:* ${String(formData.customerName || '').trim()}`);
-    lines.push(`*Telefone:* ${String(formData.customerPhone || '').trim()}`);
-    lines.push('');
-    lines.push('*PRODUTOS:*');
-    lines.push('');
+    lines.push('🥟 *PRODUTOS:*');
 
     cartSummary.items.forEach((item, index) => {
-      lines.push(`${index + 1}. ${item.fullName}`);
-      lines.push(`   Quantidade: ${item.quantity} ${item.unitFormatted}`);
-      if (item.isPriceConfirmed && item.subtotalCents !== null) {
-        lines.push(`   Valor unitário: ${item.unitPriceDisplay}`);
-        lines.push(`   Subtotal: ${item.subtotalFormatted}`);
-      } else {
-        lines.push('   Subtotal: Consulte o valor');
-      }
-      lines.push('');
+      const subtotalStr = item.isPriceConfirmed && item.subtotalCents !== null
+        ? item.subtotalFormatted
+        : 'Consulte o valor';
+      lines.push(`${index + 1}. *${item.fullName}* — ${item.quantity} ${item.unitFormatted} (${subtotalStr})`);
     });
 
-    // Informação sobre regra dos salgadinhos quando aplicável
-    if (cartSummary.totalSalgadinhosQty > 0) {
-      lines.push(`*Total de Mini Salgados:* ${cartSummary.totalSalgadinhosQty} unidades`);
-    }
-
-    // Total de produtos
+    lines.push('');
     if (cartSummary.hasUnconfirmedItems && cartSummary.totalConfirmedCents > 0) {
-      lines.push(`*TOTAL DE PRODUTOS CONFIRMADOS: ${cartSummary.totalConfirmedFormatted}*`);
-      lines.push('*(+ itens com valor sob consulta)*');
+      lines.push(`💰 *TOTAL: ${cartSummary.totalConfirmedFormatted}* _(+ itens sob consulta)_`);
     } else if (cartSummary.hasUnconfirmedItems && cartSummary.totalConfirmedCents === 0) {
-      lines.push('*TOTAL DE PRODUTOS: Consulte o valor*');
+      lines.push('💰 *TOTAL: Consulte o valor*');
     } else {
-      lines.push(`*TOTAL DE PRODUTOS: ${cartSummary.totalConfirmedFormatted}*`);
+      lines.push(`💰 *TOTAL DE PRODUTOS: ${cartSummary.totalConfirmedFormatted}*`);
     }
 
     lines.push('');
-    lines.push('*ENTREGA/RETIRADA:*');
-
     if (formData.deliveryType === 'entrega') {
-      lines.push('Tipo: Entrega');
-      lines.push('');
-      lines.push(`Endereço: ${String(formData.addressStreet || '').trim()}`);
-      lines.push('');
-      lines.push(`Bairro: ${String(formData.addressNeighborhood || '').trim()}`);
+      lines.push('🛵 *ENTREGA:*');
+      lines.push(`• Endereço: ${String(formData.addressStreet || '').trim()}`);
+      lines.push(`• Bairro: ${String(formData.addressNeighborhood || '').trim()}`);
       const complement = String(formData.addressComplement || '').trim();
       if (complement) {
-        lines.push(`Complemento/Referência: ${complement}`);
-      }
-      if (window.STORE_CONFIG.deliveryFeeCents !== null) {
-        lines.push(`Taxa de entrega: ${window.CurrencyUtils.formatCents(window.STORE_CONFIG.deliveryFeeCents)}`);
-      } else {
-        lines.push('Taxa de entrega: A consultar');
+        lines.push(`• Compl./Ref.: ${complement}`);
       }
     } else {
-      lines.push('Tipo: Retirada no local');
+      lines.push('🏠 *RECEBIMENTO:* Retirada no local');
     }
 
-    lines.push('');
-    lines.push('*DATA E HORÁRIO:*');
-    lines.push(`Data desejada: ${formatDateBR(formData.desiredDate)}`);
-    lines.push(`Horário desejado: ${String(formData.desiredTime || '').trim()}`);
+    lines.push(`🗓 *Data e Horário:* ${formatDateBR(formData.desiredDate)} às ${String(formData.desiredTime || '').trim()}`);
 
     const notes = String(formData.notes || '').trim();
-    lines.push('');
-    lines.push('*OBSERVAÇÕES:*');
-    lines.push(notes ? notes : 'Nenhuma observação adicional.');
+    if (notes) {
+      lines.push(`📝 *Obs:* ${notes}`);
+    }
 
     lines.push('');
     lines.push('Aguardo a confirmação do pedido. Obrigado! ❤️');

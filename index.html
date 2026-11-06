@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Quitutes da Vovó Louribinha — Cardápio digital de salgadinhos, pastéis, esfihas e doces caseiros preparados com carinho. Faça seu pedido pelo WhatsApp!" />
+  <meta name="description" content="Quitutes da Vovó Lourdinha — Cardápio digital de salgadinhos, pastéis, esfihas e doces caseiros preparados com carinho. Faça seu pedido pelo WhatsApp!" />
   <meta name="theme-color" content="#FF6B00" />
-  <title>Quitutes da Vovó Louribinha | Cardápio Digital</title>
+  <title>Quitutes da Vovó Lourdinha | Cardápio Digital</title>
 
   <!-- Google Fonts: Fredoka (títulos acolhedores e artesanais) + Plus Jakarta Sans (leitura limpa e números nítidos) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,23 +23,23 @@
        ==================================================================== -->
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a href="#top" class="brand-link" aria-label="Quitutes da Vovó Louribinha - Início">
+      <a href="#top" class="brand-link" aria-label="Quitutes da Vovó Lourdinha - Início">
         <div class="brand-logo-wrap">
           <img
             src="assets/logo.png"
-            alt="Logo Quitutes da Vovó Louribinha"
+            alt="Logo Quitutes da Vovó Lourdinha"
             class="brand-logo-img"
             id="headerLogoImg"
             onerror="this.parentElement.classList.add('logo-fallback-active');"
           />
           <div class="brand-logo-fallback" aria-hidden="true">
             <span class="fallback-vovo-badge">Vovó</span>
-            <span class="fallback-vovo-sub">Louribinha</span>
+            <span class="fallback-vovo-sub">Lourdinha</span>
           </div>
         </div>
         <div class="brand-text">
           <span class="brand-eyebrow">Cardápio Digital</span>
-          <span class="brand-title">Quitutes da Vovó Louribinha</span>
+          <span class="brand-title">Quitutes da Vovó Lourdinha</span>
         </div>
       </a>
 
@@ -86,7 +86,7 @@
           <div class="hero-brand-emblem">
             <img
               src="assets/logo.png"
-              alt="Logo Oficial Quitutes da Vovó Louribinha"
+              alt="Logo Oficial Quitutes da Vovó Lourdinha"
               class="hero-brand-logo-img"
               onerror="this.parentElement.hidden = true;"
             />
@@ -129,9 +129,6 @@
                 <polyline points="19 12 12 19 5 12"></polyline>
               </svg>
             </a>
-            <button type="button" class="btn btn-outline btn-lg" id="heroQuickComboBtn">
-              Experimentar sugestão (40 un. — R$ 30,00)
-            </button>
           </div>
         </div>
 
@@ -141,7 +138,7 @@
             <div class="hero-photo-frame" id="heroPhotoFrame">
               <img
                 src="assets/images/mini-salgados.jpg"
-                alt="Mini salgados fresquinhos e dourados da Quitutes da Vovó Louribinha"
+                alt="Mini salgados fresquinhos e dourados da Quitutes da Vovó Lourdinha"
                 class="hero-product-img"
                 id="heroProductImg"
                 onerror="this.parentElement.classList.add('photo-fallback-active');"
@@ -158,7 +155,7 @@
                   </svg>
                 </div>
                 <span class="fallback-photo-tag">Fotografia Oficial dos Produtos</span>
-                <strong class="fallback-photo-title">Mini Salgados da Vovó Louribinha</strong>
+                <strong class="fallback-photo-title">Mini Salgados da Vovó Lourdinha</strong>
                 <p class="fallback-photo-desc">
                   Coxinhas, bolinhas de queijo, risoles, quibes e salgadinhos de carne e calabresa preparados no capricho.
                 </p>
@@ -222,7 +219,19 @@
           </p>
         </div>
 
-        <!-- Barra de Progresso do Cento de Salgadinhos -->
+        <!-- Filtros de Categorias (4 categorias sempre visíveis na tela) -->
+        <div class="category-tabs-wrap">
+          <div class="category-tabs" id="categoryTabs" role="tablist" aria-label="Filtrar produtos por categoria">
+            <!-- Gerado dinamicamente via main.js -->
+          </div>
+        </div>
+
+        <!-- Cabeçalho contextual da categoria selecionada -->
+        <div class="active-category-banner" id="activeCategoryBanner" aria-live="polite">
+          <!-- Atualizado via main.js -->
+        </div>
+
+        <!-- Barra de Progresso do Cento de Salgadinhos (visível apenas na aba Salgadinhos) -->
         <div class="cento-tracker-banner" id="centoTrackerBanner" aria-live="polite">
           <div class="cento-tracker-info">
             <div class="cento-tracker-title-row">
@@ -239,18 +248,6 @@
               <div class="cento-progress-fill" id="centoProgressFill" style="width: 0%"></div>
             </div>
           </div>
-        </div>
-
-        <!-- Filtros de Categorias -->
-        <div class="category-tabs-wrap">
-          <div class="category-tabs" id="categoryTabs" role="tablist" aria-label="Filtrar produtos por categoria">
-            <!-- Gerado dinamicamente via main.js -->
-          </div>
-        </div>
-
-        <!-- Cabeçalho contextual da categoria selecionada -->
-        <div class="active-category-banner" id="activeCategoryBanner" aria-live="polite">
-          <!-- Atualizado via main.js -->
         </div>
 
         <!-- Grid de Produtos -->
@@ -271,17 +268,17 @@
           <div class="brand-logo-wrap brand-logo-wrap--sm">
             <img
               src="assets/logo.png"
-              alt="Logo Quitutes da Vovó Louribinha"
+              alt="Logo Quitutes da Vovó Lourdinha"
               class="brand-logo-img"
               onerror="this.parentElement.classList.add('logo-fallback-active');"
             />
             <div class="brand-logo-fallback" aria-hidden="true">
               <span class="fallback-vovo-badge">Vovó</span>
-              <span class="fallback-vovo-sub">Louribinha</span>
+              <span class="fallback-vovo-sub">Lourdinha</span>
             </div>
           </div>
           <div>
-            <h3 class="footer-title">Quitutes da Vovó Louribinha</h3>
+            <h3 class="footer-title">Quitutes da Vovó Lourdinha</h3>
             <p class="footer-tagline">Um sabor especial para cada momento!</p>
           </div>
         </div>
@@ -317,7 +314,7 @@
       </div>
     </div>
     <div class="container footer-bottom">
-      <p>© <span id="currentYear">2026</span> Quitutes da Vovó Louribinha. Todos os direitos reservados.</p>
+      <p>© <span id="currentYear">2026</span> Quitutes da Vovó Lourdinha. Todos os direitos reservados.</p>
     </div>
   </footer>
 
@@ -396,7 +393,7 @@
           <line x1="12" y1="16" x2="12.01" y2="16"></line>
         </svg>
         <span>
-          Seu pedido inclui item(ns) com valor <strong>"Consulte o valor"</strong>. O preço desses itens será informado pela Vovó Louribinha no WhatsApp.
+          Seu pedido inclui item(ns) com valor <strong>"Consulte o valor"</strong>. O preço desses itens será informado pela Vovó Lourdinha no WhatsApp.
         </span>
       </div>
 
@@ -499,7 +496,7 @@
                   />
                   <span class="delivery-option-icon" aria-hidden="true">🏠</span>
                   <span class="delivery-option-title">Retirada no Local</span>
-                  <span class="delivery-option-desc">Retirar diretamente com a Vovó Louribinha</span>
+                  <span class="delivery-option-desc">Retirar diretamente com a Vovó Lourdinha</span>
                 </label>
 
                 <label class="delivery-option-card" id="optionEntregaCard">
@@ -624,7 +621,7 @@
               </div>
 
               <p class="checkout-disclaimer">
-                Ao clicar no botão abaixo, você será redirecionado para o WhatsApp oficial da <strong>Quitutes da Vovó Louribinha</strong> com o resumo completo do seu pedido. A confirmação final do pedido depende da resposta da proprietária.
+                Ao clicar no botão abaixo, você será redirecionado para o WhatsApp oficial da <strong>Quitutes da Vovó Lourdinha</strong> com o resumo completo do seu pedido. A confirmação final do pedido depende da resposta da proprietária.
               </p>
 
               <button type="submit" class="btn btn-whatsapp btn-block btn-lg" id="submitWhatsAppOrderBtn">
@@ -657,7 +654,7 @@
       <h3 id="postOrderTitle">Resumo Gerado para o WhatsApp!</h3>
       <p>
         Abrimos o WhatsApp com os dados do seu pedido para o número oficial <strong>+55 11 94796-0798</strong>.
-        Lembre-se de enviar a mensagem na conversa e aguardar a confirmação da Vovó Louribinha! ❤️
+        Lembre-se de enviar a mensagem na conversa e aguardar a confirmação da Vovó Lourdinha! ❤️
       </p>
 
       <div class="post-order-preview-wrap">

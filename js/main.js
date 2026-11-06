@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * QUITUTES DA VOVÓ LOURIBINHA - CONTROLADOR PRINCIPAL DE INTERFACE (UI)
+ * QUITUTES DA VOVÓ LOURDINHA - CONTROLADOR PRINCIPAL DE INTERFACE (UI)
  * ============================================================================
  * Arquivo: js/main.js
  *
@@ -41,9 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
     headerCartBtn: document.getElementById('headerCartBtn'),
     headerCartCount: document.getElementById('headerCartCount'),
     headerCartTotal: document.getElementById('headerCartTotal'),
-
-    // Hero Quick Combo
-    heroQuickComboBtn: document.getElementById('heroQuickComboBtn'),
 
     // Mobile Bottom Bar
     mobileCartBar: document.getElementById('mobileCartBar'),
@@ -176,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * Renderiza as abas de navegação por categorias.
+   * Renderiza as abas de navegação por categorias (4 categorias sempre visíveis em grade).
    */
   function renderCategoryTabs() {
     if (!els.categoryTabs) return;
@@ -192,8 +189,10 @@ document.addEventListener('DOMContentLoaded', () => {
           data-category-id="${escapeHtml(cat.id)}"
         >
           <span class="cat-tab-icon">${getCategorySvgIcon(cat.icon)}</span>
-          <span class="cat-tab-name">${escapeHtml(cat.name)}</span>
-          ${cat.badge ? `<span class="cat-tab-badge">${escapeHtml(cat.badge)}</span>` : ''}
+          <span class="cat-tab-text">
+            <span class="cat-tab-name">${escapeHtml(cat.name)}</span>
+            ${cat.badge ? `<span class="cat-tab-badge">${escapeHtml(cat.badge)}</span>` : ''}
+          </span>
         </button>
       `;
     }).join('');
@@ -207,17 +206,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const category = window.CurrencyUtils.getCategoryById(activeCategoryId) || window.CATEGORIES[0];
 
     let priceHighlightHtml = '';
-    if (category.id === 'salgadinhos' || category.id === 'todos') {
+    if (category.id === 'salgadinhos') {
       priceHighlightHtml = `
         <div class="cat-banner-pricing">
-          <span class="cat-price-pill cat-price-pill--green">100 unidades: <strong>R$ 65,00</strong></span>
-          <span class="cat-price-pill cat-price-pill--orange">Menos de 100 un.: <strong>R$ 0,75 / un.</strong></span>
+          <span class="cat-price-pill cat-price-pill--green">100 un.: <strong>R$ 65,00</strong></span>
+          <span class="cat-price-pill cat-price-pill--orange">Avulso: <strong>R$ 0,75/un</strong></span>
         </div>
       `;
     } else {
       priceHighlightHtml = `
         <div class="cat-banner-pricing">
-          <span class="cat-price-pill cat-price-pill--consult">Preços sob consulta pelo WhatsApp</span>
+          <span class="cat-price-pill cat-price-pill--consult">Valores sob consulta</span>
         </div>
       `;
     }
@@ -254,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="product-media-fallback">
             <span class="media-fallback-icon">${getCategorySvgIcon(category ? category.icon : 'salgado')}</span>
             <strong class="media-fallback-title">${escapeHtml(product.fullName || product.name)}</strong>
-            <span class="media-fallback-sub">Quitutes da Vovó Louribinha</span>
+            <span class="media-fallback-sub">Quitutes da Vovó Lourdinha</span>
           </div>
           ${product.tag ? `<span class="product-card-tag ${product.priceConfirmed ? 'tag-confirmed' : 'tag-consult'}">${escapeHtml(product.tag)}</span>` : ''}
           <span class="product-category-chip">${escapeHtml(categoryLabel)}</span>
@@ -447,10 +446,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * Atualiza a barra de progresso do Cento de Salgadinhos.
+   * Visível SOMENTE quando a categoria ativa é "salgadinhos".
    * @param {object} summary
    */
   function updateCentoTracker(summary) {
     if (!els.centoTrackerBanner) return;
+
+    if (activeCategoryId !== 'salgadinhos') {
+      els.centoTrackerBanner.hidden = true;
+      return;
+    }
+    els.centoTrackerBanner.hidden = false;
 
     const qty = summary.totalSalgadinhosQty;
     const target = window.SALGADINHOS_PRICING_RULE.centoQuantity;
@@ -485,15 +491,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * Renderiza os itens dentro do Drawer do Carrinho.
+   * Renderiza os itens dentro do Drawer do Carrinho com visual moderno e organizado.
    * @param {object} summary
    */
   function renderCartDrawer(summary) {
     if (!els.cartDrawerBody) return;
 
     els.cartDrawerSubtitle.textContent = summary.isEmpty
-      ? 'Seu carrinho está vazio'
-      : `${summary.totalItemsCount} ${summary.totalItemsCount === 1 ? 'item selecionado' : 'itens selecionados'} (${summary.distinctProductsCount} ${summary.distinctProductsCount === 1 ? 'sabor' : 'sabores'})`;
+      ? 'Nenhum item adicionado'
+      : `${summary.totalItemsCount} ${summary.totalItemsCount === 1 ? 'unidade' : 'unidades'} • ${summary.distinctProductsCount} ${summary.distinctProductsCount === 1 ? 'sabor' : 'sabores'}`;
 
     els.clearCartBtn.hidden = summary.isEmpty;
     els.cartDrawerFooter.hidden = summary.isEmpty;
@@ -502,10 +508,10 @@ document.addEventListener('DOMContentLoaded', () => {
       els.cartDrawerBody.innerHTML = `
         <div class="cart-empty-state">
           <div class="cart-empty-icon" aria-hidden="true">🧺</div>
-          <h3>Seu carrinho ainda está vazio</h3>
-          <p>Escolha seus salgadinhos, pastéis, esfihas ou doces favoritos no cardápio para montar seu pedido.</p>
+          <h3>Seu pedido ainda está vazio</h3>
+          <p>Escolha seus salgadinhos, pastéis, esfihas ou doces favoritos no cardápio para começar.</p>
           <button type="button" class="btn btn-primary" id="emptyCartBrowseBtn">
-            Escolher produtos no cardápio
+            Ver cardápio
           </button>
         </div>
       `;
@@ -521,63 +527,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
     els.cartDrawerBody.innerHTML = `
       <ul class="cart-items-list">
-        ${summary.items.map((item) => `
-          <li class="cart-item-row" data-cart-item="${escapeHtml(item.productId)}">
-            <div class="cart-item-main">
-              <div class="cart-item-info">
-                <strong class="cart-item-name">${escapeHtml(item.fullName)}</strong>
-                <span class="cart-item-unit-price">${escapeHtml(item.unitPriceDisplay)}</span>
-              </div>
-              <button
-                type="button"
-                class="cart-item-remove-btn"
-                data-action="cart-remove"
-                data-product-id="${escapeHtml(item.productId)}"
-                aria-label="Remover ${escapeHtml(item.fullName)} do pedido"
-                title="Remover item"
-              >
-                Remover
-              </button>
-            </div>
+        ${summary.items.map((item) => {
+          const cat = window.CurrencyUtils.getCategoryById(item.categoryId);
+          const thumbHtml = item.product.image
+            ? `<img src="${escapeHtml(item.product.image)}" alt="" class="cart-item-thumb-img" style="object-position: ${item.product.imageFocalPoint || 'center'};" onerror="this.parentElement.classList.add('thumb-fallback');" />`
+            : '';
 
-            <div class="cart-item-controls-row">
-              <div class="qty-stepper qty-stepper--sm">
+          return `
+            <li class="cart-item-row" data-cart-item="${escapeHtml(item.productId)}">
+              <div class="cart-item-top">
+                <div class="cart-item-thumb ${item.product.image ? '' : 'thumb-fallback'}" aria-hidden="true">
+                  ${thumbHtml}
+                  <span class="cart-item-thumb-icon">${getCategorySvgIcon(cat ? cat.icon : 'salgado')}</span>
+                </div>
+
+                <div class="cart-item-info">
+                  <strong class="cart-item-name">${escapeHtml(item.fullName)}</strong>
+                  <span class="cart-item-unit-price">${escapeHtml(item.unitPriceDisplay)}</span>
+                </div>
+
                 <button
                   type="button"
-                  class="qty-btn"
-                  data-action="cart-dec"
+                  class="cart-item-remove-btn"
+                  data-action="cart-remove"
                   data-product-id="${escapeHtml(item.productId)}"
-                  aria-label="Diminuir 1 unidade"
-                >−</button>
-                <input
-                  type="number"
-                  min="1"
-                  max="9999"
-                  step="1"
-                  value="${item.quantity}"
-                  class="qty-input"
-                  data-action="cart-input"
-                  data-product-id="${escapeHtml(item.productId)}"
-                  aria-label="Quantidade de ${escapeHtml(item.fullName)}"
-                />
-                <button
-                  type="button"
-                  class="qty-btn"
-                  data-action="cart-inc"
-                  data-product-id="${escapeHtml(item.productId)}"
-                  aria-label="Aumentar 1 unidade"
-                >+</button>
+                  aria-label="Remover ${escapeHtml(item.fullName)} do pedido"
+                  title="Remover item"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </button>
               </div>
 
-              <div class="cart-item-subtotal-wrap">
-                <span class="cart-item-subtotal-label">Subtotal:</span>
-                <strong class="cart-item-subtotal ${item.isPriceConfirmed ? '' : 'is-consult'}">
-                  ${escapeHtml(item.subtotalFormatted)}
-                </strong>
+              <div class="cart-item-controls-row">
+                <div class="qty-stepper qty-stepper--sm">
+                  <button
+                    type="button"
+                    class="qty-btn"
+                    data-action="cart-dec"
+                    data-product-id="${escapeHtml(item.productId)}"
+                    aria-label="Diminuir 1 unidade"
+                  >−</button>
+                  <input
+                    type="number"
+                    min="1"
+                    max="9999"
+                    step="1"
+                    value="${item.quantity}"
+                    class="qty-input"
+                    data-action="cart-input"
+                    data-product-id="${escapeHtml(item.productId)}"
+                    aria-label="Quantidade de ${escapeHtml(item.fullName)}"
+                  />
+                  <button
+                    type="button"
+                    class="qty-btn"
+                    data-action="cart-inc"
+                    data-product-id="${escapeHtml(item.productId)}"
+                    aria-label="Aumentar 1 unidade"
+                  >+</button>
+                </div>
+
+                <div class="cart-item-subtotal-wrap">
+                  <span class="cart-item-subtotal-label">Subtotal</span>
+                  <strong class="cart-item-subtotal ${item.isPriceConfirmed ? '' : 'is-consult'}">
+                    ${escapeHtml(item.subtotalFormatted)}
+                  </strong>
+                </div>
               </div>
-            </div>
-          </li>
-        `).join('')}
+            </li>
+          `;
+        }).join('')}
       </ul>
     `;
 
@@ -586,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
       els.cartRuleBox.hidden = false;
       els.cartRuleBox.className = `cart-rule-box ${summary.salgadinhosRuleStatus === 'exact_100' || summary.salgadinhosRuleStatus === 'multiple_centos' ? 'cart-rule-box--green' : ''}`;
       els.cartRuleBox.innerHTML = `
-        <strong>Mini Salgados (${summary.totalSalgadinhosQty} un.):</strong>
+        <strong>🥟 Mini Salgados (${summary.totalSalgadinhosQty} un.):</strong>
         <span>${escapeHtml(summary.salgadinhosRuleMessage)}</span>
       `;
     } else {
@@ -602,7 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (summary.hasUnconfirmedItems && summary.totalConfirmedCents === 0) {
       els.cartFooterTotalValue.textContent = 'Consulte o valor';
     } else if (summary.hasUnconfirmedItems) {
-      els.cartFooterTotalValue.textContent = `${summary.totalConfirmedFormatted} + sob consulta`;
+      els.cartFooterTotalValue.textContent = `${summary.totalConfirmedFormatted} + consulta`;
     } else {
       els.cartFooterTotalValue.textContent = summary.totalConfirmedFormatted;
     }
@@ -803,6 +825,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activeCategoryId = categoryId;
     renderCategoryTabs();
     renderActiveCategoryBanner();
+    updateCentoTracker(window.CartManager.getSummary());
     renderProductsGrid();
   }
 
@@ -826,15 +849,6 @@ document.addEventListener('DOMContentLoaded', () => {
         selectCategory(catId);
       }
     });
-  });
-
-  // Botão de sugestão rápida do exemplo oficial (15 coxinhas + 10 bolinhas de queijo + 15 quibes = 40 un = R$ 30,00)
-  els.heroQuickComboBtn?.addEventListener('click', () => {
-    window.CartManager.setItemQuantity('salg-coxinha', 15);
-    window.CartManager.setItemQuantity('salg-bolinha-queijo', 10);
-    window.CartManager.setItemQuantity('salg-kibe', 15);
-    showToast('Sugestão adicionada: 15 coxinhas + 10 bolinhas de queijo + 15 quibes (40 un. = R$ 30,00)!', 'success');
-    openCartDrawer();
   });
 
   // Delegação de eventos na grade de produtos

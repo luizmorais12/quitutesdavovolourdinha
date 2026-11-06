@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * QUITUTES DA VOVÓ LOURIBINHA - GERENCIAMENTO DO CARRINHO DE COMPRAS
+ * QUITUTES DA VOVÓ LOURDINHA - GERENCIAMENTO DO CARRINHO DE COMPRAS
  * ============================================================================
  * Arquivo: js/cart.js
  *
@@ -130,7 +130,7 @@ const CartManager = (() => {
         salgadinhosRuleMessage = `Regra do Cento aplicada! 100 unidades por ${window.CurrencyUtils.formatCents(rule.centoPriceCents)} (economia de ${window.CurrencyUtils.formatCents(salgadinhosSavingsCents)}).`;
       } else if (rule.above100Mode === 'consult') {
         salgadinhosRuleStatus = 'above_100_consult';
-        salgadinhosRuleMessage = `Acima de 100 unidades (${totalSalgadinhosQty} un.): valor sujeito a confirmação com a Vovó Louribinha.`;
+        salgadinhosRuleMessage = `Acima de 100 unidades (${totalSalgadinhosQty} un.): valor sujeito a confirmação com a Vovó Lourdinha.`;
       } else if (remainingSalgadinhos === 0) {
         salgadinhosRuleStatus = 'multiple_centos';
         salgadinhosSavingsCents = fullCentos * ((rule.centoQuantity * rule.unitPriceBelow100Cents) - rule.centoPriceCents);

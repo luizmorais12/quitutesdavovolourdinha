@@ -1,13 +1,13 @@
-# Quitutes da Vovó Louribinha — Cardápio Digital + Carrinho + Pedidos via WhatsApp
+# Quitutes da Vovó Lourdinha — Cardápio Digital + Carrinho + Pedidos via WhatsApp
 
-Cardápio digital completo, responsivo e funcional desenvolvido exclusivamente com **HTML5, CSS3 e JavaScript puro (Vanilla JS)** para a **Quitutes da Vovó Louribinha**.
+Cardápio digital completo, responsivo e funcional desenvolvido exclusivamente com **HTML5, CSS3 e JavaScript puro (Vanilla JS)** para a **Quitutes da Vovó Lourdinha**.
 
 ---
 
 ## 1. Estrutura de Arquivos
 
 ```text
-quitutes-vovo-louribinha/
+quitutes-vovo-lourdinha/
 │
 ├── index.html          # Estrutura semântica da página inicial, cardápio, drawer e checkout
 │
@@ -21,7 +21,7 @@ quitutes-vovo-louribinha/
 │   └── main.js         # Renderização dinâmica da interface, filtros e eventos
 │
 ├── assets/
-│   ├── logo.png                # Logo oficial da Quitutes da Vovó Louribinha
+│   ├── logo.png                # Logo oficial da Quitutes da Vovó Lourdinha
 │   └── images/
 │       └── mini-salgados.jpg   # Fotografia real dos mini salgados fornecida pela proprietária
 │

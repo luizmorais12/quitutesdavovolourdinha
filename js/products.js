@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * QUITUTES DA VOVÓ LOURIBINHA - CATÁLOGO E REGRAS COMERCIAIS CENTRALIZADAS
+ * QUITUTES DA VOVÓ LOURDINHA - CATÁLOGO E REGRAS COMERCIAIS CENTRALIZADAS
  * ============================================================================
  * Arquivo: js/products.js
  *
@@ -11,7 +11,7 @@
  */
 
 const STORE_CONFIG = {
-  brandName: 'Quitutes da Vovó Louribinha',
+  brandName: 'Quitutes da Vovó Lourdinha',
   tagline: 'Um sabor especial para cada momento!',
   subtitle: 'Quitutes preparados com carinho para deixar seus momentos ainda mais gostosos.',
   whatsappNumber: '5511947960798',
@@ -19,7 +19,7 @@ const STORE_CONFIG = {
   whatsappBaseUrl: 'https://wa.me/5511947960798',
   logoPath: 'assets/logo.png',
   featuredProductImage: 'assets/images/mini-salgados.jpg',
-  storageKey: 'vovo_louribinha_cart_v1',
+  storageKey: 'vovo_lourdinha_cart_v1',
   // Taxa de entrega: null significa não pré-fixada (a consultar conforme o bairro).
   // Caso a proprietária defina uma taxa fixa no futuro, informe em centavos (ex: 1000 = R$ 10,00).
   deliveryFeeCents: null
@@ -51,18 +51,11 @@ const SALGADINHOS_PRICING_RULE = {
  */
 const CATEGORIES = [
   {
-    id: 'todos',
-    name: 'Todos os Quitutes',
-    shortName: 'Todos',
-    icon: 'sparkles',
-    description: 'Confira todas as delícias caseiras preparadas com carinho pela Vovó Louribinha.'
-  },
-  {
     id: 'salgadinhos',
     name: 'Salgadinhos',
     shortName: 'Salgadinhos',
     icon: 'salgado',
-    badge: 'R$ 65,00 o cento | R$ 0,75 un.',
+    badge: 'R$ 65 o cento',
     description: 'Mini salgados sequinhos, crocantes por fora e bem recheados. Você pode misturar os sabores no seu pedido!'
   },
   {
@@ -70,7 +63,7 @@ const CATEGORIES = [
     name: 'Pastéis',
     shortName: 'Pastéis',
     icon: 'pastel',
-    badge: 'Consulte o valor',
+    badge: 'Sob consulta',
     description: 'Pastéis caseiros com massa crocante e recheios preparados com tempero de família.'
   },
   {
@@ -78,7 +71,7 @@ const CATEGORIES = [
     name: 'Esfihas',
     shortName: 'Esfihas',
     icon: 'esfiha',
-    badge: 'Consulte o valor',
+    badge: 'Sob consulta',
     description: 'Esfihas macias e saborosas, feitas com ingredientes selecionados e muito capricho.'
   },
   {
@@ -86,7 +79,7 @@ const CATEGORIES = [
     name: 'Doces',
     shortName: 'Doces',
     icon: 'doce',
-    badge: 'Consulte o valor',
+    badge: 'Sob consulta',
     description: 'Doces caseiros tradicionais para adoçar suas festas, comemorações e momentos especiais.'
   }
 ];
@@ -252,7 +245,7 @@ const PRODUCTS = [
     name: 'Esfihas Caseiras (Sabores sob consulta)',
     fullName: 'Esfihas Caseiras',
     categoryId: 'esfihas',
-    description: 'Esfihas macias e bem recheadas feitas com carinho. Adicione ao pedido e indique nas observações sua preferência para consultar valores com a Vovó Louribinha.',
+    description: 'Esfihas macias e bem recheadas feitas com carinho. Adicione ao pedido e indique nas observações sua preferência para consultar valores com a Vovó Lourdinha.',
     image: null,
     unitLabel: 'sob consulta',
     unitSingular: 'unidade',
